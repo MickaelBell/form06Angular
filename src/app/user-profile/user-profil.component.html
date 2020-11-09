@@ -1,0 +1,78 @@
+<div>
+  <form #myForm="ngForm" (ngSubmit)="myForm.valid" class="form-group">
+
+    <label for="firstname"></label><br>
+    <input type='text' name='firstname' [(ngModel)]="userProfile.firstname" #firstname="ngModel" required minlength="3" maxlength="15" placeholder="Prénom"><br>
+
+    <div *ngIf="myForm.submitted && firstname.errors">
+      <div *ngIf="firstname.errors.required">
+        <h3>Le Prénom est requis</h3>
+      </div>
+      <div *ngIf="firstname.errors.maxlength">
+        <h3>Le Prénom ne doit pas dépasser 15 caractères</h3>
+      </div>
+      <div *ngIf="firstname.errors.minlength">
+        <h3>Le Prénom doit comporter au moins 3 caractères</h3>
+      </div>
+    </div>
+
+    <label for="lastname"></label><br>
+    <input type='text' name='Lastname' [(ngModel)]="userProfile.lastname" #lastname="ngModel" required minlength="3" maxlength="15" placeholder="Nom"><br>
+
+    <div *ngIf="myForm.submitted && lastname.errors">
+      <div *ngIf="lastname.errors.required">
+        <h3>Le Nom est requis</h3>
+      </div>
+      <div *ngIf="lastname.errors.maxlength">
+        <h3>Le Nom ne doit pas dépasser 15 caractères</h3>
+      </div>
+      <div *ngIf="lastname.errors.minlength">
+        <h3>Le Nom doit comporter au moins 3 caractères</h3>
+      </div>
+    </div>
+
+    <label for="userEmail"></label><br>
+    <input type="email" name="userEmail" [(ngModel)]="userProfile.email" #userMail="ngModel" email required placeholder="Email@wcs.fr"><br>
+
+    <div *ngIf="myForm.submitted && userMail.invalid">
+
+      <div *ngIf="userMail.errors.required">
+        <h3>L'email est requis</h3>
+      </div>
+
+      <div *ngIf="userMail.errors.email">
+        <h3>L'email est invalide</h3>
+      </div>
+    </div>
+
+    <label for="userPassword"></label><br>
+    <input type="password" name="userPassword" [(ngModel)]="userProfile.password"  minlength="6" required #userPwd="ngModel" placeholder="Mot de passe">
+
+    <div *ngIf="myForm.submitted && userPwd.invalid">
+
+      <div *ngIf="userPwd.errors.required">
+        <h3>Le mot de passe est requis</h3>
+      </div>
+
+      <div *ngIf="userPwd.errors.minlength">
+        <h3>Le mot de passe doit comporter au moins 6 charactères</h3>
+      </div>
+
+    </div>
+
+    <br>
+
+    <section class="buttonSection">
+
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+
+      <div>
+        <button type="reset">Reset</button>
+      </div>
+
+    </section>
+
+  </form>
+</div>
